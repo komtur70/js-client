@@ -23,7 +23,7 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: "babel-loader" 
+        loader: "babel-loader"
       }
     ]
   },
@@ -37,6 +37,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'My First JS-Client',
       template: './src/index.html',
+      hash: true
     }),
     new ExtractTextPlugin("app.css")
   ]
