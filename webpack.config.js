@@ -1,4 +1,5 @@
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var path = require('path');
 
 module.exports = {
@@ -7,10 +8,25 @@ module.exports = {
     path: path.resolve(__dirname,'dist'),
     filename: 'bundle.js'
   },
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        use: ExtractTextPlugin.extract({
+           fallback: "style-loader",
+           use: [
+             { loader: "css-loader" },
+             { loader: "sass-loader" }
+           ]
+         })
+      }
+    ]
+  },
   plugins: [
     new HtmlWebpackPlugin({
       title: 'My First JS-Client',
       template: './src/index.html',
-    })
+    }),
+    new ExtractTextPlugin("app.css")
   ]
 }
