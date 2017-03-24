@@ -7,5 +7,10 @@ module.exports = {
     path: path.resolve(__dirname,'dist'),
     filename: 'bundle.js'
   },
-  plugins: [new HtmlWebpackPlugin()]
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'My First JS-Client',
+      template: './src/index.html',
+    })
+  ]
 }
